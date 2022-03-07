@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/js/new.js">
+</head>
+<!-- internal css-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;1,500&family=Varta:wght@500&display=swap');
+ *{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: 'Varta', sans-serif; 
+   
+      }
+      body{
+        font-family: 'Varta', sans-serif; 
+        background-image: url(/assets/img/bg-cover.png);
+      }
+      
+    
+      
+    
+  h3{
+	  margin: 5px;
+    border-left: 6px solid black;
+	  padding: 16px;
+
+   }
+ 
+	 
+   
+/*Next & previous buttons */
+#prev, #next {
+ 
+	clear: both;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	padding: 16px;
+	margin-top: 22px;
+	color: rgb(17, 16, 16);
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+}
+/* Position the "next button" to the right */
+#next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+/* On hover, add a black background color with a little bit see-through */
+#prev:hover, #next:hover {
+	background-color: rgba(0,0,0,0.8); 
+} 
+.row{
+   	padding-left: 1%;
+	  padding-top: 1%;
+    align-items: stretch;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .card {
+   
+    /*float: left;*/
+    max-width: 33.333%;
+    padding: 5rem;
+
+    margin-bottom: .77rem;
+    border: 0;
+    flex-basis: 33.333%;
+    flex-grow: 0;
+    flex-shrink: 0;
+	
+  }
+  /*image*/
+  .card > img {
+	  margin-left: 25%;
+    margin-bottom: .75rem;
+    width: 50% ;
+  	padding: 1px;
+    text-align: center;
+  }
+  
+  .card h5  ,p{ 
+   text-align: center;
+
+
+  }
+/*Hover */
+  .card:hover{
+  
+
+    transition: transform 0.2s; 
+    background-image: url(/assets/img/wheel-bg.jpg);
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+	  border: 1px solid black;
+    transition: all .5s;
+    transform: scale(1.2)
+  
+   
+ 
+  }
+
+
+
+</style>
+<body>
+<div class="container">
+<h3> WHEELS</h3>
+<p style="font-style: italic ; text-align: justify; margin: 20px;"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum molestiae nam ducimus velit accusantium dolorem, corporis numquam totam, exercitationem accusamus, dolor omnis tempora. Ducimus enim libero eius aliquid laudantium ex.</p>
+<section>
+ 
+<!-- ========== Start Section ========== -->
+
+
+  <div class="container"  >
+    <div class="row" id="carousel">
+      <div class="card " id="content" >
+       <img src="assets/img/wgu.png">
+        <h5>17-INCH CAST ALUMINIUM WHEEL,FULLY PAINTED SILVER LITHO</h5>
+        <p class="card-text">Standard on touring FWD</p>
+        <h5>(WGU)</h5>
+      </div>
+       <div class="card">
+        <img src="assets/img/wjr.png">
+        <h5>17-INCH CAST ALUMINIUM DIAMOND -CUT WHEEL WITH BALTIC GRAY POCKETS</h5>
+        <p class="card-text">Standard on Touring LFWD/Hybrid and Touring hybrid </p>
+        <h5>(WJR)</h5>
+      </div>
+       <div class="card ">
+        <img src="assets/img/wp6.png">
+        <h5>18-INCH CAST ALUMINUM WHEEL WITH FORESHADOW FINISH</h5>
+        <p class="card-text">Included with S Apprearance Package Hybrid and Limited Hybrid</p>
+        <h5>(WP6)</h5>
+      </div>
+      <div class="card ">
+        <img src="assets/img/wpf.png">
+        <h5 class=>.18-INCH CAST ALUMINUM WHEEL WITH FORESHADOW FINISH</h5>
+        <p>Included with S Apprearance Package Hybrid and Limited Hybrid</p>
+        <h5>(WP6)</h5>
+      </div>
+ 
+    </div>
+    <a id="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a id="next" onclick="plusSlides(1)">&#10095;</a>-->
+    
+  </div>
+
+  
+</section>
+<!-- ========== End Section ========== -->
+
+<!-- ========== Start javascript ========== -->
+
+<script>
+
+const gap = 4;
+
+const carousel = document.getElementById("carousel"),
+  content = document.getElementById("content"),
+  next = document.getElementById("next"),
+  prev = document.getElementById("prev");
+
+next.addEventListener("click", e => {
+  carousel.scrollBy(width + gap, 0);
+  if (carousel.scrollWidth !== 0) {
+    prev.style.display = "flex";
+  }
+  if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+    next.style.display = "none";
+  }
+});
+prev.addEventListener("click", e => {
+  carousel.scrollBy(-(width + gap), 0);
+  if (carousel.scrollLeft - width - gap <= 0) {
+    prev.style.display = "none";
+  }
+  if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+    next.style.display = "flex";
+  }
+});
+
+let width = carousel.offsetWidth;
+window.addEventListener("resize", e => (width = carousel.offsetWidth));
+
+          
+      </script>
+
+
+
+<!-- ========== End javascript ========== -->
+ 
+
+</body>
+</html>
